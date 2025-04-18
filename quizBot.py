@@ -23,7 +23,8 @@ nest_asyncio.apply()
 class Quiz(BaseModel):
     '''questions : liste des questions : list[str]
     options : liste de listes des choix avec un tag True ou False pour chaque réponse : list[list[(str,bool)]]
-    len(questions) == 10'''
+    la question ne doit pas figurer dans les options
+    len(questions) == 5'''
     questions:list[str]
     options: list[list[tuple[str,bool]]]
 # Agent Pydantic AI
@@ -69,10 +70,10 @@ def quiz():
         
         is_correct = (options[index][selected][1] == True)
         session['last_result'] = {'selected': selected, 'correct': is_correct}
-        return redirect(url_for('quiz'))
+        
 
     if index >= len(questions):
-        return "Quiz terminé ! 🎉"
+        return render_template('end.html')
 
     q = questions[index]
     

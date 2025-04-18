@@ -1,13 +1,59 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
+  <meta charset="UTF-8">
   <title>Uploader un PDF</title>
+  <style>
+    body {
+      background: #fdf6f0;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    h2 {
+      color: #ff6f91;
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+
+    form {
+      background: #ffffff;
+      padding: 30px 40px;
+      border-radius: 20px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    input[type="file"] {
+      display: block;
+      margin: 20px 0;
+    }
+
+    button {
+      background: #ff6f91;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background: #ff4f7b;
+    }
+  </style>
 </head>
 <body>
-  <h2>Uploader un fichier PDF pour générer un quiz</h2>
+  <h2>📚 Génère un Quiz à partir d'un PDF</h2>
   <form method="POST" enctype="multipart/form-data">
     <input type="file" name="pdf" accept="application/pdf" required>
-    <button type="submit">Générer le quiz</button>
+    <button type="submit">Générer le quiz ✨</button>
   </form>
 </body>
 </html>

@@ -1,8 +1,58 @@
-<!doctype html>
-<html>
-<head><title>Fin du Quiz</title></head>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Fin du Quiz</title>
+  <style>
+    body {
+      background: #fdf6f0;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      text-align: center;
+    }
+
+    h2 {
+      font-size: 32px;
+      color: #6c63ff;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 18px;
+      color: #555;
+      margin-bottom: 30px;
+    }
+
+    a {
+      display: inline-block;
+      text-decoration: none;
+      background: #ff6f91;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 12px;
+      font-size: 16px;
+      transition: background 0.3s ease;
+    }
+
+    a:hover {
+      background: #ff4f7b;
+    }
+
+    .emoji {
+      font-size: 50px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
 <body>
-  <h2>👋 Fin du quiz. Merci pour ta participation !</h2>
-  <a href="/">Recommencer</a>
+  <div class="emoji">🎉</div>
+  <h2>Fin du Quiz !</h2>
+  <p>Merci pour ta participation ✨<br>Tu peux toujours recommencer si tu veux t’améliorer !</p>
+  <a href="/">🔁 Recommencer le Quiz</a>
 </body>
 </html>

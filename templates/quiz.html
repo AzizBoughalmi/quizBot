@@ -1,61 +1,117 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <title>Quiz</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            padding: 40px;
-            max-width: 600px;
-            margin: auto;
-        }
-        .question {
-            font-size: 20px;
-            margin-bottom: 20px;
-        }
-        .option {
-            margin: 10px 0;
-        }
-        .result {
-            margin: 20px 0;
-            font-weight: bold;
-        }
-        .correct {
-            color: green;
-        }
-        .incorrect {
-            color: red;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>Quiz</title>
+  <style>
+    body {
+      background: #fdf6f0;
+      font-family: 'Segoe UI', sans-serif;
+      padding: 40px;
+      max-width: 700px;
+      margin: auto;
+      border-radius: 20px;
+    }
+
+    .question-box {
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+    }
+
+    .question {
+      font-size: 20px;
+      color: #444;
+      margin-bottom: 20px;
+    }
+
+    .option {
+      margin: 10px 0;
+    }
+
+    input[type="radio"] {
+      margin-right: 10px;
+    }
+
+    button {
+      background: #6c63ff;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background: #574fdb;
+    }
+
+    .result {
+      margin-top: 20px;
+      font-weight: bold;
+      padding: 10px;
+      border-radius: 10px;
+    }
+
+    .correct {
+      background: #c8f7c5;
+      color: #2d7a36;
+    }
+
+    .incorrect {
+      background: #fbd5d5;
+      color: #c0392b;
+    }
+
+    a {
+      display: inline-block;
+      margin-top: 15px;
+      text-decoration: none;
+      background: #ff6f91;
+      color: white;
+      padding: 8px 15px;
+      border-radius: 10px;
+      transition: background 0.3s ease;
+    }
+
+    a:hover {
+      background: #ff4f7b;
+    }
+  </style>
 </head>
 <body>
+  <div class="question-box">
     <div class="question">
-        <p><strong>Question {{ index + 1 }} / {{ total }}</strong></p>
-        <p>{{ question }}</p>
+      <p><strong>Question {{ index + 1 }} / {{ total }}</strong></p>
+      <p>{{ question }}</p>
     </div>
 
     <form method="post">
-        {% for option in range(options[index]|length) %}
-            <div class="option">
-                <label>
-                    <input type="radio" name="answer" value="{{ option }}" required>
-                    {{ options[index][option][0] }}
-                </label>
-            </div>
-        {% endfor %}
-        <button type="submit">Valider</button>
+      {% for option in range(options[index]|length) %}
+        <div class="option">
+          <label>
+            <input type="radio" name="answer" value="{{ option }}" required>
+            {{ options[index][option][0] }}
+          </label>
+        </div>
+      {% endfor %}
+      <button type="submit">Valider ✅</button>
     </form>
 
     {% if last_result %}
-        <div class="result {% if last_result.correct %}correct{% else %}incorrect{% endif %}">
-            {% if last_result.correct %}
-                ✅ Bonne réponse !
-            {% else %}
-                ❌ Mauvaise réponse !
-            {% endif %}
-        </div>
-        <a href="{{ url_for('next_question') }}">Question Suivante ➡️</a>
+      <div class="result {% if last_result.correct %}correct{% else %}incorrect{% endif %}">
+        {% if last_result.correct %}
+          ✅ Bonne réponse !
+        {% else %}
+          ❌ Mauvaise réponse !
+        {% endif %}
+      </div>
+      <a href="{{ url_for('next_question') }}">Question Suivante ➡️</a>
     {% endif %}
+  </div>
 </body>
 </html>
