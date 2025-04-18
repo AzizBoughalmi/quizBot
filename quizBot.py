@@ -50,8 +50,8 @@ def index():
                 questions = result.output.questions
                 options= result.output.options
             # Shuffle des options pour chaque question
-            for opt_list in options:
-                random.shuffle(opt_list)
+                for opt_list in options:
+                    random.shuffle(opt_list)
                 session['questions'] = questions
                 session['options'] = options
                 session['current_index'] = 0
