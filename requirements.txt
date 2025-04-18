@@ -1,0 +1,8 @@
+Flask
+pydantic
+pydantic_core
+pydantic_ai
+PyMuPDF
+nest_asyncio
+gunicorn
+python-dotenv

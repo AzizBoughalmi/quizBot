@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 40px;
+            max-width: 600px;
+            margin: auto;
+        }
+        .question {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+        .option {
+            margin: 10px 0;
+        }
+        .result {
+            margin: 20px 0;
+            font-weight: bold;
+        }
+        .correct {
+            color: green;
+        }
+        .incorrect {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="question">
+        <p><strong>Question {{ index + 1 }} / {{ total }}</strong></p>
+        <p>{{ question }}</p>
+    </div>
+
+    <form method="post">
+        {% for option in range(options[index]|length) %}
+            <div class="option">
+                <label>
+                    <input type="radio" name="answer" value="{{ option }}" required>
+                    {{ options[index][option][0] }}
+                </label>
+            </div>
+        {% endfor %}
+        <button type="submit">Valider</button>
+    </form>
+
+    {% if last_result %}
+        <div class="result {% if last_result.correct %}correct{% else %}incorrect{% endif %}">
+            {% if last_result.correct %}
+                ✅ Bonne réponse !
+            {% else %}
+                ❌ Mauvaise réponse !
+            {% endif %}
+        </div>
+        <a href="{{ url_for('next_question') }}">Question Suivante ➡️</a>
+    {% endif %}
+</body>
+</html>
